@@ -1,0 +1,44 @@
+.liquid {
+	background:#EEEEEE url(../../../assets/img/home/bg.jpg); repeat-y scroll 50% 0;
+	border:2px solid #EEEEEE;
+	-moz-border-radius:10px 10px 10px 10px;
+	padding:10px 0;
+}
+.liquid .previous {
+	display:block;
+	height:126px;
+	width:64px;
+	background-image:url(../../../assets/img/home/cartelera/previous.png);
+	float:left;
+	margin:0;
+	padding:0;
+	margin-top: 42px;
+	cursor:pointer;
+}
+.liquid .next {
+	display:block;
+	height:126px;
+	width:64px;
+	background-image:url(../../../assets/img/home/cartelera/next.png);
+	float:right;
+	margin:0;
+	padding:0;
+	margin-top: 42px;
+	cursor:pointer;
+}
+.liquid ul li {
+	width:126px;
+	padding:0 2px;
+	margin:0;
+}
+.liquid ul li a img {
+	-moz-box-shadow: 5px 5px 3px #222;
+   	-webkit-box-shadow: 5px 5px 3px #222;
+   	box-shadow: 5px 5px 3px #222;
+	width:75%;
+	height:75%;
+}
+.texto{
+	color:#FFF;
+	padding-bottom:10px;	
+}

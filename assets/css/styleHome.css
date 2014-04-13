@@ -1,0 +1,181 @@
+body{
+    background:#f9f9f9 url(../img/home/bg.jpg);
+	color: #333;
+	border-image-repeat: repeat;
+	font-family: "Helvetica Neue", "Helvetica", Arial;
+	font-size: 15px;
+}
+
+	#wrapper{
+		margin: 39px auto 39px auto;
+		background-color: #EEEEEE;
+		background: rgba(238,238,238, 0.4);
+		/*border-radius: 100px 100px 10px 10px;*/
+		box-shadow: 0px 0px 80px #000000;
+		padding-bottom: 50px;
+		height:auto;
+	}
+		/*ESTILO PARA HACER RESPONSIVO EL DIV, QUE CONTIENE LOS VIDEOS*/
+		.video_contenedor{
+			height:0px;
+			width:100%;
+			padding-top:56.25%; /* Relación: 16/9 = 56.25% */
+			position:relative;
+		}
+			/* El iframe se adapta al tamaño del contenedor */
+			.video_contenedor iframe,
+			.video_contenedor object,
+			.video_contenedor embed
+			{
+				position:absolute;
+				height:100%;
+				width:100%;
+				top:0px;
+				left:0px;
+			}
+			.flexslider .slides img {
+				width: 100%;
+				display: block;
+			}	
+
+#footer
+{
+	color:black;
+	/*background:#FFFFFF url(../../assets/img/home/logo3.png) repeat-y scroll 50% 0;*/
+}
+
+.logo2 img{
+	width:20%;
+	height:20%;
+	float:left;
+}	
+	/*REDES SOCIALES*/
+	#rs{
+		float:right;
+	}
+	ul#rs
+	{
+		margin: 27px 33px 0px 0px;
+		width:280px; 
+		height:48px; 
+		float: right;
+	}
+		ul#rs li
+		{
+			list-style:none; 
+			margin:2px; 
+			padding:0; 
+			float:left; 
+			border:none;
+		}
+			ul#rs li a
+			{
+				background:url(../../assets/img/home/rs.png)no-repeat 0 0; 
+				margin:0; 
+				padding:0; 
+				display:block; 
+				position:relative; 
+				width:48px; 
+				height:48px; 
+				overflow:visible;
+			}
+				ul#rs li a.twitter
+				{
+					background-position:0 0;
+				}
+				ul#rs li a.facebook
+				{
+					background-position:-48px 0;
+				}
+				ul#rs li a.google
+				{
+					background-position:-96px 0;
+				}
+				ul#rs li a.youtube
+				{
+					background-position:-144px 0;
+				}
+					ul#rs li a.twitter:hover
+					{
+						background-position:0 -48px;
+					}
+					ul#rs li a.facebook:hover
+					{
+						background-position:-48px -48px;
+					}
+					ul#rs li a.google:hover
+					{
+						background-position:-96px -48px;
+					}
+					ul#rs li a.youtube:hover
+					{
+						background-position:-144px -48px;
+					}
+				ul#rs li a span
+				{
+					background:orange; 
+					position:absolute; 
+					top:-10px; 
+					width:auto; 
+					left:0;
+					opacity:0; 
+					padding:3px; 
+					text-align:left;
+					text-decoration:none; 
+					color:#000000; 
+					filter:alpha(opacity=0); 
+					white-space:nowrap; 
+					border-radius:3px; 
+					font-size:12px; 
+					-webkit-transition:all 0.25s ease-in-out;
+					-moz-transition:all 0.25s ease-in-out;
+					-o-transition:all 0.25s ease-in-out; 
+					-ms-transition:all 0.25s ease-in-out; 
+					transition:all 0.25s ease-in-out;
+				}
+					ul#rs li a:hover span
+					{
+						opacity:.8; 
+						filter:alpha(opacity=80); 
+						top:-24px;
+					}
+	.texto1
+	{
+		float:left;
+		color:#000000;
+		margin: 33px 0px 0px 53px;
+		
+	}
+	
+/*ESTILO DE NOTICIAS*/
+.block {
+  text-align: center;
+  background: #008C23;
+  border: #008C23 solid 1px;
+  margin: 50px;
+  height:auto;
+  box-shadow: 0px 0px 80px #000000;
+}
+ 
+.block:before {
+  content: '';
+  display: inline-block;
+  height: 100%; 	
+  vertical-align: middle;
+  margin-right: -0.25em; /* Adjusts for spacing */
+    
+  /* For visualization 
+  background: #808080; width: 5px;
+  */
+ }
+ 
+.centered {
+  display: inline-block;
+  vertical-align: middle;
+  width: 90%;
+  height:auto%;
+  padding: 10px 15px;
+  border: #a0a0a0 solid 1px;
+  background: #f5f5f5;
+  box-shadow: 0px 0px 40px #000000;
+ }
