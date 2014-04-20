@@ -2,14 +2,13 @@
   class C_latitud  extends CI_Controller {
     public function __construct() {
         parent::__construct();
-        $this->load->model("m_preguntas");
+        $this->load->model("m_question");
         $this->load->helper('url');
 		$this->load->library("session");
     }
 	
-	function get_l(){
-		
-		$preguntas = $this->m_preguntas->get_descriptions();
+	function get_l(){		
+		$preguntas = $this->m_question->get_descriptions();
 		if(is_array($preguntas)){
 			//print_r($preguntas);
 			foreach($preguntas as $pregunta){
@@ -21,5 +20,7 @@
 			}
 		}
 	}
-	
+	function mapa(){
+		$this->load->view("v_lat");
+	}	
 }

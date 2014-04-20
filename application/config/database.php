@@ -47,9 +47,9 @@
 
 $active_group = 'default';
 $active_record = TRUE;
-$db['default']['hostname'] = 'eu-cdbr-azure-north-c.cloudapp.net';
-$db['default']['username'] = 'b10de74d9b0005';
-$db['default']['password'] = '20cd5f6e';
+$db['default']['hostname'] = 'localhost';//'eu-cdbr-azure-north-c.cloudapp.net';
+$db['default']['username'] = 'root';//'b10de74d9b0005';
+$db['default']['password'] = '';//'20cd5f6e';
 $db['default']['database'] = 'earthpuzzle';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';

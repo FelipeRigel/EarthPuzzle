@@ -3,12 +3,12 @@
  class C_preguntas extends CI_Controller {
     public function __construct() {
         parent::__construct();
-        $this->load->model("m_preguntas");
+        $this->load->model("m_question");
         $this->load->helper('url');
 		$this->load->library("session");
     }
 	function prueba(){
-    	$id_pregunta = $this->m_preguntas->get_id_pre_rand($this->session->userdata("preguntas"));
+    	$id_pregunta = $this->m_question->get_id_question_rand($this->session->userdata("preguntas"));
 		
 
 		//foreach(
@@ -24,8 +24,8 @@
 			return;
 		}		
 		//$this->session->unset_userdata("score");
-    	$id_pregunta = $this->m_preguntas->get_id_pre_rand($this->session->userdata("preguntas"));
-    	$data["pregunta_correcta"]=$this->m_preguntas->get_pregunta($id_pregunta->id);	
+    	$id_pregunta = $this->m_question->get_id_question_rand($this->session->userdata("preguntas"));
+    	$data["pregunta_correcta"]=$this->m_question->get_question($id_pregunta->id);	
 		if($this->session->userdata("num_preguntas")=="")
 			$this->session->set_userdata("num_preguntas","0");
 		
@@ -33,7 +33,7 @@
 		
 			$correcta = $this->input->post("respuesta");;//estatico, se recibira por post
 			$pregunta = $this->input->post("pregunta");			
-			$data["imagen"] = $this->m_preguntas->get_description($pregunta);
+			$data["imagen"] = $this->m_question->get_description($pregunta);
 			if($this->session->userdata("num_preguntas")!=""){
 				$num_preguntas = $this->session->userdata("num_preguntas");
 				$this->session->set_userdata("num_preguntas",$num_preguntas+1);
@@ -93,18 +93,50 @@
 		
 		$data["imagenes"]=$imagenes;
 		$data["comodines"]=$comodines;
-		
+		$array=$this->wikidefinition("Glacier");
+		var_dump($array);
 		$this->load->view("vista_home",$data);					
 	}
 	function logout(){
 		//$this->session->unset_userdata("nombre");
 		$this->session->sess_destroy();
-		if($this->m_preguntas->eliminar_sess($this->session->userdata("session_id")))
+		if($this->m_question->delete_sess($this->session->userdata("session_id")))
 			echo "se hizo";
 		//$this->load->database();
 		//$this->db->query("DELETE FROM ci_sessions where session_id='".$this->session->userdata("session_id")."'");
 		//$this->session->sess_destroy();
 		//echo 1;
 		
+	}
+	function wikidefinition($s) {
+	//ENGLISH WIKI
+		$url = "http://en.wikipedia.org/w/api.php?action=opensearch&search=".urlencode($s)."&format=xml&limit=4";
+		$ch = curl_init($url);
+		curl_setopt($ch, CURLOPT_HTTPGET, TRUE);
+		curl_setopt($ch, CURLOPT_POST, FALSE);
+		curl_setopt($ch, CURLOPT_HEADER, false);
+		curl_setopt($ch, CURLOPT_NOBODY, FALSE);
+		curl_setopt($ch, CURLOPT_VERBOSE, FALSE);
+		curl_setopt($ch, CURLOPT_REFERER, "");
+		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
+		curl_setopt($ch, CURLOPT_MAXREDIRS, 4);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+		curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 6.1; he; rv:1.9.2.8) Gecko/20100722 Firefox/3.6.8");
+
+		$page = curl_exec($ch);
+		//echo $page;
+		$xml = simplexml_load_string($page);
+		//var_dump($xml);
+		$datos=array();
+		foreach($xml as $item){
+			//var_dump($item);
+			foreach($item->Item as $sub_item){
+				$imagen=(string)($sub_item->Image["source"]);
+				//echo "<img src='$imagen' width=150 height=150 />";
+				$dato=(string)($sub_item->Description);
+				$datos[]=array("image"=>$imagen,"descriptio"=>$dato);
+			}
+		}
+		return $datos;
 	}
   }

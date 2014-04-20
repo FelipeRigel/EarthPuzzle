@@ -9,16 +9,27 @@
 
 
     function index(){
-		if(!$this->session->userdata("num_preguntas")==19){
-			$this->load->view("vista_score");
+		if(!$this->session->userdata("questions_num")==19){
+			$this->load->model("m_ranking");
+			$data=$this->m_ranking->getScoreId($this->session->userdata("session_id"));
+			if(!$data){
+				$data=array(
+				"user"=>$this->session->userdata("name"),
+				"facebook_user"=>$this->session->userdata("f_id"),
+				"score"=>$this->session->userdata("score"),
+				"session_id"=>$this->session->userdata("session_id")
+				);
+				$this->m_ranking->insertScore($data);
+			}
+			$this->load->view("v_score");
 		}else{
-			redirect("c_preguntas");
+			redirect("question");
 		}
     }
 	
 	function restart(){
 		$this->session->set_userdata("score",0);
-		redirect("c_preguntas");
+		redirect("question");
 	}
 	function share($score){
 		$this->load->view("share");
